@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [FREE CRM Application Test Automation Test Suite]">
+  <listeners>
+    <listener class-name="com.pom.extentreportlistner.ExtentReporterNG"/>
+  </listeners>
+  <test thread-count="5" name="App Test Cases(failed)">
+    <classes>
+      <class name="com.pom.testcases.ModulePageTest">
+        <methods>
+          <include name="verifyModulePage"/>
+          <include name="enableDisableTest" invocation-numbers="0 2"/>
+          <include name="setUp"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.pom.testcases.ModulePageTest -->
+      <class name="com.pom.testcases.DashboardPageTest">
+        <methods>
+          <include name="validateBookingCheckBox"/>
+          <include name="tearDown"/>
+          <include name="setup"/>
+        </methods>
+      </class> <!-- com.pom.testcases.DashboardPageTest -->
+    </classes>
+  </test> <!-- App Test Cases(failed) -->
+</suite> <!-- Failed suite [FREE CRM Application Test Automation Test Suite] -->

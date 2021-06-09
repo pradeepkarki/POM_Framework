@@ -2,9 +2,7 @@ package com.pom.testcases;
 
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 import com.pom.base.PageBase;
 import com.pom.pages.HomePage;
@@ -19,7 +17,7 @@ public class HomePageTest extends PageBase {
 		super();
 	}
 
-	@BeforeMethod
+	@BeforeClass
 	public void setup() {
 		initialization();
 		loginPage = PageFactory.initElements(driver, LoginPage.class);
@@ -39,7 +37,7 @@ public class HomePageTest extends PageBase {
 		Assert.assertEquals(logedInUser, "SUPER ADMIN");
 	}
 
-	@AfterMethod
+	@AfterClass
 	public void tearDown() {
 		driver.quit();
 	}

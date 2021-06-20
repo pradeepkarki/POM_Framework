@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
+import com.pom.util.MavenProperties;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,20 +23,12 @@ public class  PageBase {
 
 	public PageBase() {
 		WebDriverManager.chromedriver().setup();
-		try {
-			prop = new Properties();
-			FileInputStream ip = new FileInputStream(
-					System.getProperty("user.dir") + "/src/main/java/com" + "/pom/conf/config.properties");
-			prop.load(ip);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 	public static void initialization() {
-		String browserName = prop.getProperty("browser");
+		String browserName = MavenProperties.getMavenProperties().getProperty("browser");
+		String url = MavenProperties.getMavenProperties().getProperty("url");
+
 		if (browserName.equals("chrome")) {
 
 			driver = new ChromeDriver();
@@ -49,7 +42,7 @@ public class  PageBase {
 		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT, TimeUnit.SECONDS);
 
-		driver.get(prop.getProperty("url"));
+		driver.get(url);
 
 	}
 }

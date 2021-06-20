@@ -1,5 +1,6 @@
 package com.pom.pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -8,7 +9,9 @@ import com.pom.base.PageBase;
 
 
 
-public class HomePage extends PageBase {
+public class HomePage  {
+
+	WebDriver driver;
 
 	@FindBy(xpath = "//*[@id=\"sidebar\"]/div[2]/a/p/strong")
 	WebElement logedInUserLabel;
@@ -24,8 +27,8 @@ public class HomePage extends PageBase {
 
 	// Initializing the Page Objects:
 
-	public HomePage() {
-		PageFactory.initElements(driver, this);
+	public HomePage(WebDriver driver) {
+		this.driver =driver;
 	}
 
 	public String verifyHomePageTitle() {
@@ -48,6 +51,6 @@ public class HomePage extends PageBase {
 
 	public ModulePage clickOnModules() {
 		modulesLink.click();
-		return new ModulePage();
+		return new ModulePage(driver);
 	}
 }

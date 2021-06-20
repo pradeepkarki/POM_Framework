@@ -24,9 +24,9 @@ public class DashboardPageTest extends PageBase {
 	public void setup() {
 		
 		initialization();
-		loginPage = new LoginPage();
+		loginPage = new LoginPage(driver);
 		loginPage.login(prop.getProperty("userName"), prop.getProperty("password"));
-		homePage = new HomePage();
+		homePage = new HomePage(driver);
 		dashboardPage = homePage.clickOnDashBoardLink();
 	}
 

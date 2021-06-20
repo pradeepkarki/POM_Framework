@@ -28,9 +28,9 @@ public class ModulePageTest extends PageBase {
 	@BeforeMethod
 	public void setUp() {
 		initialization();
-		loginPage = new LoginPage();
+		loginPage = new LoginPage(driver);
 		loginPage.login(prop.getProperty("userName"), prop.getProperty("password"));
-		homePage = new HomePage();
+		homePage = new HomePage(driver);
 		modulePage = homePage.clickOnModules();
 	}
 
